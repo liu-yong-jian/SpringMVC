@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+  	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+  
+  	<typeAliases>
+  		<package name="com.atguigu.crud.bean"/>
+  	</typeAliases>
+  	
+  	<!-- PageHelper的原理是基于拦截器实现的。拦截器的配置有两种方法，
+  		一种是在mybatis的配置文件中配置，一种是直接在spring的配置文件中进行 -->
+  	<plugins>
+  		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+  			<!--分页参数合理化  -->
+  			<!-- 启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页 -->
+       	    <!-- 禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据 -->
+			<property name="reasonable" value="true"/>
+  		</plugin>
+  	</plugins>
+  
+  </configuration>
